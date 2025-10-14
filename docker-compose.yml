@@ -1,0 +1,35 @@
+services:
+
+  autenticacao_api: 
+     container_name: springboot-autenticacaoapi
+     build:
+        context: . 
+        dockerfile: Dockerfile
+     ports:
+        - "8082:8082"
+     networks:
+        - autenticacaoapi-network
+     depends_on:
+        - postgres
+     environment:
+        SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db_autenticacao
+
+  postgres:
+    image: postgres:16
+    container_name: postgres-autenticacaoapi
+    environment:
+      POSTGRES_DB: db_autenticacao
+      POSTGRES_USER: user_coti
+      POSTGRES_PASSWORD: user_pass
+    ports:
+      - "5434:5432"
+    networks:
+      - autenticacaoapi-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  autenticacaoapi-network:
+
+volumes:
+  postgres_data:
