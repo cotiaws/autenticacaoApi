@@ -40,7 +40,7 @@ public class SwaggerConfiguration {
 	                                .url("http://localhost:8082")
 	                                .description("Servidor de Desenvolvimento"),
 	                        new Server()
-	                                .url("https://api.autenticacao.com")
+	                                .url("https://autenticacaoapi-axhkefbjaha0bkez.canadacentral-01.azurewebsites.net")
 	                                .description("Servidor de Produção")
 	                ))
 	                
